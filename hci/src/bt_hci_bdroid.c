@@ -461,8 +461,7 @@ static void *bt_hc_worker_thread(void *arg)
 
         if (events & HC_EVENT_PRELOAD)
         {
-            if (userial_open(USERIAL_PORT_1) == FALSE)
-                break;
+            userial_open(USERIAL_PORT_1);
 
             /* Calling vendor-specific part */
             if (bt_vnd_if)

@@ -1,7 +1,6 @@
 /******************************************************************************
  *
  *  Copyright (C) 2009-2012 Broadcom Corporation
- *  Copyright (c) 2013, Linux Foundation. All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -153,8 +152,8 @@ enum {
 #define BTIF_MEDIA_BITRATE_STEP 5
 #endif
 
-/* High quality setting @ 44.1 khz */
-#define DEFAULT_SBC_BITRATE 328
+/* Middle quality quality setting @ 44.1 khz */
+#define DEFAULT_SBC_BITRATE 229
 
 #ifndef A2DP_MEDIA_TASK_STACK_SIZE
 #define A2DP_MEDIA_TASK_STACK_SIZE       0x2000         /* In bytes */
@@ -764,12 +763,8 @@ void btif_a2dp_setup_codec(void)
 
     GKI_disable();
 
-    /* for now hardcode 44/48 khz 16 bit stereo */
-#ifdef SAMPLE_RATE_48K
-    media_feeding.cfg.pcm.sampling_freq = 48000;
-#else
+    /* for now hardcode 44.1 khz 16 bit stereo */
     media_feeding.cfg.pcm.sampling_freq = 44100;
-#endif
     media_feeding.cfg.pcm.bit_per_sample = 16;
     media_feeding.cfg.pcm.num_channel = 2;
     media_feeding.format = BTIF_AV_CODEC_PCM;
